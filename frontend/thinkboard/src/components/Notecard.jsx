@@ -121,8 +121,12 @@ const Notecard = ({ note, onDelete }) => {
                   <Archive className="w-4 h-4 text-base-content/60 hover:text-base-content" />
                 </button>
                 <Link
-                  to={`/note/edit/${note._id}`}
-                  onClick={(e) => e.stopPropagation()}
+                  to={`/note/${note._id}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Set a flag to trigger edit mode when the page loads
+                    sessionStorage.setItem("editMode", "true");
+                  }}
                   className="p-2 rounded-lg hover:bg-primary/10 transition-colors duration-200"
                   title="Edit note"
                 >

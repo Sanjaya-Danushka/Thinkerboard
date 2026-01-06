@@ -2,8 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PlusIcon, BookOpen, Sparkles } from "lucide-react";
 import ThemeSwitcher from "./ThemeSwitcher";
+import { useNotes } from "../context/NoteContext";
 
 const Navbar = () => {
+  const { notes, getTodayNotesCount } = useNotes();
+
   return (
     <header className="sticky top-0 z-50 glass border-b border-base-content/10 backdrop-blur-lg">
       <div className="mx-auto max-w-7xl px-4 py-4">
@@ -14,7 +17,9 @@ const Navbar = () => {
               <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
                 <BookOpen className="w-5 h-5 text-primary-content" />
               </div>
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-success rounded-full animate-pulse"></div>
+              {notes.length > 0 && (
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-success rounded-full animate-pulse"></div>
+              )}
             </div>
             <div>
               <h1 className="text-2xl font-bold gradient-text group-hover:scale-105 transition-transform duration-300">
@@ -33,14 +38,14 @@ const Navbar = () => {
               <div className="text-center">
                 <div className="text-xs text-base-content/60">Today</div>
                 <div className="text-sm font-semibold text-primary">
-                  5 notes
+                  {getTodayNotesCount()} notes
                 </div>
               </div>
               <div className="w-px h-6 bg-base-content/20"></div>
               <div className="text-center">
                 <div className="text-xs text-base-content/60">Total</div>
                 <div className="text-sm font-semibold text-secondary">
-                  24 notes
+                  {notes.length} notes
                 </div>
               </div>
             </div>

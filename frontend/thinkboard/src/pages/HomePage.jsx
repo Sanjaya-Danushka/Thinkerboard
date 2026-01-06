@@ -1,49 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import RateLimitedUi from "../components/RateLimitedUi";
 import Notecard from "../components/Notecard";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { toast } from "react-hot-toast";
 import { FileText, Sparkles, Search, Filter } from "lucide-react";
+import { useNotes } from "../context/NoteContext";
 
 const HomePage = () => {
-  const [isRateLimited, setIsRateLimited] = React.useState(false);
-  const [notes, setNotes] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { notes, loading, isRateLimited, deleteNote } = useNotes();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredNotes, setFilteredNotes] = useState([]);
-
-  useEffect(() => {
-    const fetchNotes = async () => {
-      try {
-        setLoading(true);
-        const res = await axios.get("http://localhost:5001/api/notes");
-        console.log("Fetched notes:", res.data);
-        setNotes(res.data || []);
-        setIsRateLimited(false);
-      } catch (error) {
-        console.error("Error fetching notes:", error);
-        if (error.response) {
-          if (error.response.status === 429) {
-            setIsRateLimited(true);
-            toast.error("Rate limit exceeded. Please try again later.");
-          } else {
-            toast.error(
-              `Error: ${error.response.data?.message || "Failed to fetch notes"}`,
-            );
-          }
-        } else {
-          toast.error("Network error. Please check your connection.");
-        }
-        setNotes([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNotes();
-  }, []);
 
   useEffect(() => {
     if (searchTerm.trim() === "") {
@@ -66,12 +32,10 @@ const HomePage = () => {
       );
       if (!confirmed) return;
 
-      await axios.delete(`http://localhost:5001/api/notes/${noteId}`);
-      setNotes(notes.filter((note) => note._id !== noteId));
-      toast.success("Note deleted successfully");
+      await deleteNote(noteId);
     } catch (error) {
-      console.error("Error deleting note:", error);
-      toast.error(error.response?.data?.message || "Failed to delete note");
+      // Error is already handled in context
+      console.error("Delete failed in HomePage:", error);
     }
   };
 

@@ -33,6 +33,13 @@ const NoteDetailPage = () => {
         setNote(response.data);
         setEditTitle(response.data.title);
         setEditContent(response.data.content);
+
+        // Check if we should enter edit mode immediately
+        const shouldEditMode = sessionStorage.getItem("editMode");
+        if (shouldEditMode === "true") {
+          setIsEditing(true);
+          sessionStorage.removeItem("editMode"); // Clear the flag
+        }
       } catch (error) {
         console.error("Error fetching note:", error);
         if (error.response?.status === 404) {
