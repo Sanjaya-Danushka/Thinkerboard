@@ -1,6 +1,10 @@
 # 📝 Thinkerboard
 
 A modern, intelligent note-taking application built with the MERN stack. Capture ideas, organize thoughts, and boost your productivity with a beautiful, intuitive interface.
+<img width="1889" height="915" alt="Screenshot_20260106_181202" src="https://github.com/user-attachments/assets/80dc922f-784a-4396-b994-294ca50115d7" />
+<img width="1764" height="861" alt="Screenshot_20260106_181231" src="https://github.com/user-attachments/assets/35d06ca1-84b8-4b2d-973c-3569d2df5446" />
+
+
 
 ## ✨ Features
 
