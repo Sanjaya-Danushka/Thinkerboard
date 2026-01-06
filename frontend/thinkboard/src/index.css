@@ -1,5 +1,91 @@
 @import "tailwindcss";
 
+/* DaisyUI Forest Theme Colors */
+:root[data-theme="forest"] {
+  --p: 142 76% 36%; /* primary - green */
+  --pc: 142 100% 96%; /* primary-content - white */
+  --s: 317 71% 52%; /* secondary - pink */
+  --sc: 317 100% 97%; /* secondary-content - white */
+  --a: 174 60% 51%; /* accent - cyan */
+  --ac: 174 100% 9%; /* accent-content - black */
+  --n: 33 31% 23%; /* neutral - dark green */
+  --nc: 33 100% 97%; /* neutral-content - white */
+  --b1: 33 31% 23%; /* base-100 - dark green */
+  --b2: 30 28% 26%; /* base-200 - darker green */
+  --b3: 28 26% 28%; /* base-300 - darkest green */
+  --bc: 33 100% 97%; /* base-content - white */
+}
+
+/* DaisyUI Semantic Classes */
+.bg-primary {
+  background-color: hsl(var(--p));
+}
+.text-primary {
+  color: hsl(var(--p));
+}
+.bg-primary-content {
+  background-color: hsl(var(--pc));
+}
+.text-primary-content {
+  color: hsl(var(--pc));
+}
+
+.bg-secondary {
+  background-color: hsl(var(--s));
+}
+.text-secondary {
+  color: hsl(var(--s));
+}
+.bg-secondary-content {
+  background-color: hsl(var(--sc));
+}
+.text-secondary-content {
+  color: hsl(var(--sc));
+}
+
+.bg-accent {
+  background-color: hsl(var(--a));
+}
+.text-accent {
+  color: hsl(var(--a));
+}
+.bg-accent-content {
+  background-color: hsl(var(--ac));
+}
+.text-accent-content {
+  color: hsl(var(--ac));
+}
+
+.bg-neutral {
+  background-color: hsl(var(--n));
+}
+.text-neutral {
+  color: hsl(var(--n));
+}
+.bg-neutral-content {
+  background-color: hsl(var(--nc));
+}
+.text-neutral-content {
+  color: hsl(var(--nc));
+}
+
+.bg-base-100 {
+  background-color: hsl(var(--b1));
+}
+.bg-base-200 {
+  background-color: hsl(var(--b2));
+}
+.bg-base-300 {
+  background-color: hsl(var(--b3));
+}
+.text-base-content {
+  color: hsl(var(--bc));
+}
+
+.border-base-content {
+  border-color: hsl(var(--bc));
+}
+
 /* Custom button styles similar to DaisyUI */
 .btn {
   display: inline-flex;

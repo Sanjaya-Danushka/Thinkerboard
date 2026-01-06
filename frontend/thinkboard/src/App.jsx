@@ -7,10 +7,7 @@ import { toast } from "react-hot-toast";
 
 const App = () => {
   return (
-    <div>
-      <button className="btn btn-outline" onClick={() => toast("Hello World!")}>
-        click me
-      </button>
+    <div data-theme="forest">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/create" element={<CreatePage />} />
