@@ -4,6 +4,8 @@ import connectDB from "./config/db.js";
 
 const app = express();
 await connectDB();
+//middleware
+app.use(express.json());
 app.use("/api/notes", noteRoutes);
 
 const PORT = process.env.PORT || 5001;
